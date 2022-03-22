@@ -13,6 +13,7 @@ img {
 :root {
   --primary-color: #00ffff;
   --secondary-color: #10a5f5;
+  --alert-color: #b22222;
   --column: 10;
 }
 
@@ -117,6 +118,10 @@ img {
 
 .selected {
   background-color: var(--secondary-color);
+}
+
+.bomb {
+  background-color: var(--alert-color);
 }
 
 /* Footer */
