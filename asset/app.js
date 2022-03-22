@@ -74,16 +74,29 @@ function play() {
         card.innerHTML += `${array[i]}`;
         //appendo il div creato al container
         container.appendChild(card);
-    
-        //creo evento
-        card.addEventListener('click',function () {
-            console.log(this.innerHTML);
-            if (bombe.includes(Number(this.innerHTML)) == true) {
-                this.classList.add('bomb');
+        
+        card.addEventListener('click', selected);
+        //creo funzione
+        let counter = 0;
+        function selected() {
+            if (bombe.includes(Number(card.innerHTML)) == true) {
+                card.classList.add('bomb');
+                alert('BOOM!');
+                game = false;
             } else {
-                this.classList.add('selected');
+                card.classList.add('selected');
+                game = true;
+                //conta il punteggio
+                counter += 1;
             }
-        });
+            console.log(counter);
+        }
+
+        // creo evento
+        let game = true;
+        if (game == false) {
+            card.removeEventListener('click',selected);
+        }
     }
     
 }
@@ -107,18 +120,6 @@ function shuffleArray(array){
     array.sort(()=> Math.random() - 0.5);
     return array
 }
-
-//creo funzione che assegna all'elemento selezionato la classe selected 
-// function selected(array,x) {
-    //funzione che, collegata ad un evento, cambia classe all'elemento(this) cliccato
-    //condizione per vedere quale classe aggiungere
-    // if (array.includes(x) == false) {
-//        this.classList.add('selected'); 
-//     } else {
-//         this.classList.add('bomb');
-//     }
-    
-// }
 
 //funzione reset
 function reset() {
